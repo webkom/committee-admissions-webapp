@@ -1,5 +1,16 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
 body {
   background: linear-gradient(0deg, #f4f4f4, #eae9e8);
-  height: 98vh;
+  min-height: 100vh;
   font-family: Raleway, "Helvetica Neue", Arial, sans-serif;
+  margin: 0;
 }
