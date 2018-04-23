@@ -8,12 +8,6 @@
   margin: 0 0.7em 3em 0.7em;
 }
 
-.flex-center > * {
+.container > * {
   max-width: 100%;
-}
-
-@media screen and (max-width: 415px) {
-  .title {
-    font-size: 2.5rem;
-  }
 }

@@ -7,6 +7,7 @@ import AbakusLogo from "src/components/AbakusLogo";
 import LinkButton from "src/components/LinkButton";
 import { Card, CardTitle, CardParagraph } from "src/components/Card";
 
+import { media } from "src/styles/mediaQueries";
 import "./LandingPage.css";
 
 Moment.globalLocale = "nb";
@@ -16,7 +17,6 @@ class LandingPage extends Component {
     super(props);
     this.state = {
       results: undefined,
-      loading: true,
       admission: [],
       error: null
     };
@@ -41,24 +41,23 @@ class LandingPage extends Component {
       .then(
         data => {
           this.setState({
-            loading: false,
             admission: data[0]
           });
         },
         error => {
-          this.setState({ loading: false, error });
+          this.setState({ error });
         }
       );
   }
 
   render() {
-    const { error, loading, admission } = this.state;
+    const { error, admission } = this.state;
     console.log(admission);
     if (error) {
       return <div>Error: {error.message}</div>;
     } else {
       return (
-        <div className="container flex-center">
+        <div className="container">
           <AbakusLogo />
           <PageTitle>Opptak til komiteer i Abakus</PageTitle>
           <PageSubTitle>
@@ -94,6 +93,9 @@ const PageTitle = styled.h1`
   text-align: center;
   margin: 0.2em 0 0 0;
   line-height: 1.2em;
+  ${media.handheld`
+    font-size: 2.5rem;
+  `};
 `;
 
 const PageSubTitle = PageTitle.extend`
