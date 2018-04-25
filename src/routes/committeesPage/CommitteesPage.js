@@ -30,20 +30,15 @@ class CommitteesPage extends Component {
 
   render() {
     const { committees } = this.props;
-    const committeeCards = committees.map(
-      (committee, index) => (
-        console.log(this.props.selectedCommittees),
-        (
-          <CommitteeCard
-            name={committee.name}
-            description={committee.description}
-            key={committee.name + "-" + index}
-            onToggle={this.toggleCommittee}
-            isChosen={this.props.selectedCommittees[committee.name]}
-          />
-        )
-      )
-    );
+    const committeeCards = committees.map((committee, index) => (
+      <CommitteeCard
+        name={committee.name}
+        description={committee.description}
+        key={committee.name + "-" + index}
+        onToggle={this.toggleCommittee}
+        isChosen={this.props.selectedCommittees[committee.name]}
+      />
+    ));
     console.log(committees);
 
     return (

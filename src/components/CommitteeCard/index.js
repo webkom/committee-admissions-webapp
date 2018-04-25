@@ -1,11 +1,10 @@
 import React from "react";
 import styled from "styled-components";
-import Img from "react-image";
 import { media } from "src/styles/mediaQueries";
 import Button from "src/components/Button";
 
 const UnstyledLogo = ({ className, logo }) => (
-  <img className={className} src={logo} />
+  <img className={className} src={logo} alt="Logo" />
 );
 
 const Card = styled.div`

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import ApplicationForm from "src/routes/applicationForm/ApplicationForm";
+import FormikApp from "src/routes/applicationForm/ApplicationForm";
 import CommitteesPage from "src/routes/committeesPage/CommitteesPage";
 import { media } from "src/styles/mediaQueries";
 
@@ -11,8 +11,7 @@ class ApplicationPortal extends Component {
       results: undefined,
       committees: [],
       error: null,
-      selectedCommittees: {},
-      isCommitteesPage: true
+      selectedCommittees: {}
     };
 
     const hostname = window && window.location && window.location.hostname;
@@ -22,10 +21,6 @@ class ApplicationPortal extends Component {
       this.API_ROOT = "http://localhost:8000";
     }
   }
-
-  toggleCommittesPageFlag = () => {
-    this.setState({ isCommitteesPage: !this.state.isCommitteesPage });
-  };
 
   startApplying = () => {
     const { selectedCommittees } = this.state;
@@ -55,7 +50,6 @@ class ApplicationPortal extends Component {
       .then(results => results.json())
       .then(
         data => {
-          console.log(data);
           this.setState({
             committees: data
           });
@@ -70,7 +64,6 @@ class ApplicationPortal extends Component {
   render() {
     const { error } = this.state;
     const { location } = this.props;
-    console.log(this.state);
     if (error) {
       return <div>Error: {error.message}</div>;
     } else {
@@ -82,7 +75,7 @@ class ApplicationPortal extends Component {
               toggleCommittee={this.toggleCommittee}
             />
           ) : (
-            <ApplicationForm {...this.state} />
+            <FormikApp />
           )}
         </PageContainer>
       );

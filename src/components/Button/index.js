@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 
 const Button = styled.button.attrs({
   width: props => props.width || "auto",
