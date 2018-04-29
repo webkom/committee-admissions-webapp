@@ -3,9 +3,9 @@
 > Frontend for opptak.abakus.no
 
 # Early mockups
-![Landing page](public/landingpage.png)
-![Committees page](public/committees.png)
-![Application page](public/application.png)
+<img src="public/landingpage.png" width="300" />
+<img src="public/committees.png" width="300" />
+<img src="public/application.png" width="300" />
 
 ## Getting Started
 
