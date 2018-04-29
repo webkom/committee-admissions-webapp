@@ -2,10 +2,10 @@
 
 > Frontend for opptak.abakus.no
 
-# Early mockups
-<img src="public/landingpage.png" width="700" />
-<img src="public/committees.png" width="700" />
-<img src="public/application.png" width="700" />
+## Early mockups
+<img src="public/landingpage.png" width="600" />
+<img src="public/committees.png" width="600" />
+<img src="public/application.png" width="600" />
 
 ## Getting Started
 
