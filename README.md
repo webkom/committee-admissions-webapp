@@ -2,6 +2,11 @@
 
 > Frontend for opptak.abakus.no
 
+## Early mockups
+<img src="public/landingpage.png" width="600" />
+<img src="public/committees.png" width="600" />
+<img src="public/application.png" width="600" />
+
 ## Getting Started
 
 ```bash
