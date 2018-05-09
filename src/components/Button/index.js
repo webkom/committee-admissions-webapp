@@ -2,7 +2,8 @@ import styled from "styled-components";
 
 const Button = styled.button.attrs({
   width: props => props.width || "auto",
-  fontSize: props => props.fontSize || "1em"
+  fontSize: props => props.fontSize || "1em",
+  margin: props => props.margin || "0"
 })`
   color: #fff;
   font-weight: bold;
@@ -15,6 +16,7 @@ const Button = styled.button.attrs({
   font-size: ${props => props.fontSize};
   font-family: Raleway;
   width: ${props => props.width};
+  margin: ${props => props.margin};
 `;
 
 export default Button;

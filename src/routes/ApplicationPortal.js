@@ -3,6 +3,7 @@ import styled from "styled-components";
 import FormikApp from "src/routes/applicationForm/ApplicationForm";
 import CommitteesPage from "src/routes/committeesPage/CommitteesPage";
 import { media } from "src/styles/mediaQueries";
+import AbakusLogo from "src/components/AbakusLogo";
 
 class ApplicationPortal extends Component {
   constructor(props) {
@@ -34,7 +35,7 @@ class ApplicationPortal extends Component {
     this.setState(state => ({
       selectedCommittees: {
         ...state.selectedCommittees,
-        [name]: !state.selectedCommittees[name]
+        [name.toLowerCase()]: !state.selectedCommittees[name]
       }
     }));
   };
@@ -69,23 +70,34 @@ class ApplicationPortal extends Component {
     } else {
       return (
         <PageContainer>
-          {location.pathname.startsWith("/committees") ? (
-            <CommitteesPage
-              {...this.state}
-              toggleCommittee={this.toggleCommittee}
-            />
-          ) : (
-            <FormikApp />
-          )}
+          <AbakusLogo size={"6em"} />
+          <ContentContainer>
+            {location.pathname.startsWith("/committees") ? (
+              <CommitteesPage
+                {...this.state}
+                toggleCommittee={this.toggleCommittee}
+              />
+            ) : (
+              <FormikApp
+                {...this.state}
+                apiRoot={this.API_ROOT}
+                toggleCommittee={this.toggleCommittee}
+              />
+            )}
+          </ContentContainer>
         </PageContainer>
       );
     }
   }
 }
-
+const ContentContainer = styled.div`
+  width: 100%;
+`;
 const PageContainer = styled.div`
-  width: 70em;
-  margin: 0 auto 4em auto;
+  display: flex;
+  flex-direction: column;
+  max-width: 70em;
+  margin: 0 auto;
   min-height: 100vh;
   ${media.handheld`
     width: 95vw;

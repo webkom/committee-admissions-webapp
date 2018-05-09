@@ -1,14 +1,27 @@
 import React, { Component } from "react";
-import styled from "styled-components";
 import Moment from "react-moment";
 import "moment/locale/nb";
-
+import styled from "styled-components";
+import { media } from "src/styles/mediaQueries";
 import AbakusLogo from "src/components/AbakusLogo";
 import LinkButton from "src/components/LinkButton";
 import { Card, CardTitle, CardParagraph } from "src/components/Card";
+import { MainPageTitle } from "src/components/PageTitle";
 
-import { media } from "src/styles/mediaQueries";
 import "./LandingPage.css";
+
+const Container = styled.div`
+  min-height: 100vh;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 0.7em;
+  ${media.handheld`
+    margin: 0 0.7em 3em 0.7em;
+    `};
+`;
 
 Moment.globalLocale = "nb";
 
@@ -57,23 +70,26 @@ class LandingPage extends Component {
       return <div>Error: {error.message}</div>;
     } else {
       return (
-        <div className="container">
+        <Container>
           <AbakusLogo />
-          <PageTitle>Opptak til komiteer i Abakus</PageTitle>
+          <MainPageTitle>Opptak til komiteer i Abakus</MainPageTitle>
           <PageSubTitle>
             <Moment format="YYYY">{admission.public_deadline}</Moment>
           </PageSubTitle>
           <Card margin={"1em 1em 2.5em 1em"}>
             <CardTitle>Her kan du søke til komiteer i Abakus</CardTitle>
-            <CardParagraph>
+            <CardParagraph lineHeight="1em">
               Søknadsfristen for ny søknad er <b>
                 <Moment format="dddd Do MMMM, \k\l. HH:mm">
                   {admission.public_deadline}
                 </Moment>
               </b>.
-              <br />
+            </CardParagraph>
+            <CardParagraph lineHeight="1em">
               Søker du etter dette er du ikke garantert intervju.
-              <br /> Fristen for å endre søknad er{" "}
+            </CardParagraph>
+            <CardParagraph lineHeight="1em">
+              Fristen for å endre søknad er{" "}
               <b>
                 <Moment format="dddd Do MMMM, \k\l. HH:mm">
                   {admission.application_deadline}
@@ -82,23 +98,13 @@ class LandingPage extends Component {
             </CardParagraph>
           </Card>
           <LinkButton to="/committees">Gå til søknad</LinkButton>
-        </div>
+        </Container>
       );
     }
   }
 }
 
-const PageTitle = styled.h1`
-  font-size: 3rem;
-  text-align: center;
-  margin: 0.2em 0 0 0;
-  line-height: 1.2em;
-  ${media.handheld`
-    font-size: 2.5rem;
-  `};
-`;
-
-const PageSubTitle = PageTitle.extend`
+const PageSubTitle = MainPageTitle.extend`
   color: gray;
   font-size: 2.5rem;
 `;

@@ -9,7 +9,7 @@ html {
 }
 
 body {
-  background: linear-gradient(0deg, #f4f4f4, #eae9e8);
+  background: #eae9e8;
   min-height: 100vh;
   font-family: Raleway, "Helvetica Neue", Arial, sans-serif;
   margin: 0;
