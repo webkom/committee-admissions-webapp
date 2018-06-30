@@ -57,6 +57,15 @@ const PageSubTitle = styled.h2`
     `};
 `;
 
+const SubmitButton = Button.extend`
+  background: ${props => (props.valid ? "#db3737" : "gray")};
+  border: 1px solid ${props => (props.valid ? "#a82a2a" : "darkgray")};
+
+  &:active {
+    opacity: 0.9;
+  }
+`;
+
 class ApplicationForm extends Component {
   constructor() {
     super();
@@ -91,7 +100,8 @@ class ApplicationForm extends Component {
       isSubmitting,
       committees,
       selectedCommittees,
-      handleSubmit
+      handleSubmit,
+      isValid
     } = this.props;
 
     const chooseCommitteesItems = committees.map((committee, index) => (
@@ -145,15 +155,16 @@ class ApplicationForm extends Component {
             </ChooseCommittesContainer>
           </GridContainer>
           {hasSelected && (
-            <Button
+            <SubmitButton
               className="submit-btn"
               margin="0 auto 3em auto"
               onClick={handleSubmit}
               type="submit"
               disabled={isSubmitting}
+              valid={isValid}
             >
               Submit
-            </Button>
+            </SubmitButton>
           )}
         </div>
       );
@@ -199,6 +210,7 @@ class ApplicationForm extends Component {
               onClick={handleSubmit}
               type="submit"
               disabled={isSubmitting}
+              valid={isValid}
             >
               Submit
             </Button>
@@ -247,16 +259,12 @@ const FormikApp = withFormik({
       body: JSON.stringify(submission)
     })
       .then(res => {
-        console.log(res);
+        console.log("Submit result", res);
+        resetForm();
+        setSubmitting(false);
         return res;
       })
       .catch(err => console.log(err));
-
-    //setTimeout(() => {
-    //  alert(JSON.stringify(submission, null, 2));
-    //  resetForm();
-    //  setSubmitting(false);
-    //}, 2000);
   },
   validationSchema: props => {
     return Yup.lazy(values => {
