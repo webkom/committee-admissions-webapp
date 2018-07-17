@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import { withFormik, Form, Field } from "formik";
 import Yup from "yup";
-import CommitteeLogoName from "src/components/CommitteeLogoName";
-import CommitteeApplication from "src/components/CommitteeApplication";
+
+import ToggleCommitteeSmall from "src/components/ToggleCommitteeSmall";
+import CommitteeApplication from "src/containers/CommitteeApplication";
 import styled from "styled-components";
 import Button from "src/components/Button";
 import { media } from "src/styles/mediaQueries";
@@ -105,7 +106,7 @@ class ApplicationForm extends Component {
     } = this.props;
 
     const chooseCommitteesItems = committees.map((committee, index) => (
-      <CommitteeLogoName
+      <ToggleCommitteeSmall
         name={committee.name}
         key={committee.name + "-" + index}
         isChosen={!!this.props.selectedCommittees[committee.name.toLowerCase()]}
