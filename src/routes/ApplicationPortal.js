@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import FormikApp from "src/routes/applicationForm/ApplicationForm";
+import FormikApp from "src/routes/applicationForm/FormikApp";
 import CommitteesPage from "src/routes/committeesPage/CommitteesPage";
 import { media } from "src/styles/mediaQueries";
 import AbakusLogo from "src/components/AbakusLogo";
