@@ -1,5 +1,6 @@
 # committe-admissions-webapp
 
+> Moved the frontend into the backend at https://github.com/webkom/committee-admissions so this is no longer updated.
 > Frontend for opptak.abakus.no
 
 ## Early mockups
